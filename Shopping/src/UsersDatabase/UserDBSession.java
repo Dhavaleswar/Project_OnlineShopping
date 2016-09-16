@@ -1,12 +1,14 @@
-package ShoppingDatabase;
+package UsersDatabase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DBSession {
+
+public class UserDBSession {
 	
 	private String DB_URL;
 	private String USER ;
@@ -17,13 +19,14 @@ public class DBSession {
 	
 	
 	// constructor 
-	public DBSession() throws SQLException, ClassNotFoundException {
-		DB_URL = "jdbc:mysql://localhost:3306/PRODUCT_INVENTORY";
+	public UserDBSession() throws SQLException, ClassNotFoundException {
+		DB_URL = "jdbc:mysql://localhost:3306/USERS_DB";
 		USER = "root";
 		PASS = "itsmyroot";
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(DB_URL,USER,PASS);
 		stmt = conn.createStatement();		
+		
 	}
 	
 	// resultset to run the queries
@@ -31,6 +34,12 @@ public class DBSession {
 		if (query.toLowerCase().startsWith("select")) { 
 			return stmt.executeQuery(query); 
 		}
+		/*else if (query.toLowerCase().startsWith("insert")) { 
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.execute();
+			preparedStmt.executeQuery("commit");
+			return null;
+		}*/
 		else { 
 			stmt.executeUpdate(query);
 			stmt.executeQuery("commit");
@@ -45,4 +54,5 @@ public class DBSession {
 		stmt.close();
 		conn.close();
 	}
+
 }

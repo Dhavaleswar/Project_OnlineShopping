@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 import ShoppingDatabase.DBOperations;
+import UsersDatabase.UserDBOperations;
 
 
 public class Welcome {
