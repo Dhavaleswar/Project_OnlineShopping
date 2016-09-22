@@ -29,11 +29,12 @@ public class BillServlet  extends HttpServlet {
 		try {
 			
 			DBSession dbConnection = new DBSession();
-			String query1= "SELECT DISTINCT DATE, TIME FROM PURCHASE_HISTORY WHERE BILL_NO="+billNo;
+			String query1= "SELECT DISTINCT DATE, TIME, userID FROM PURCHASE_HISTORY WHERE BILL_NO="+billNo;
 			ResultSet rs1 = dbConnection.runQuery(query1);
 			rs1.next();
 			String Date = rs1.getString("DATE");
 			String Time = rs1.getString("TIME");
+			String userID = rs1.getString("userID");
 			String query = "SELECT PRODUCT_NAME, PURCHASE_HISTORY.PRICE, PURCHASE_HISTORY.quantity, DATE, TIME FROM PURCHASE_HISTORY JOIN PRODUCTS WHERE PURCHASE_HISTORY.PID=PRODUCTS.PID AND BILL_NO="+billNo;
 			ResultSet rs = dbConnection.runQuery(query);
 			//DBOps Db = new DBOps();
@@ -43,7 +44,7 @@ public class BillServlet  extends HttpServlet {
 			//out.print(html);
 			out.print("<p style= font-size:20px align=right>Welcome " + ID + "!</p>");
 			out.print("<center><table class='upd-table'><tr><th colspan=5><h3>Shopping Spree Pvt Ltd.</h3></th></tr>"+
-					  "<tr><td id ='price' colspan=3>Name:"+ID+"<br>Bill No: "+billNo+"</td><td id ='price' colspan=2>Date:"+Date+"<br>Time:"+Time+"</td></tr>"+
+					  "<tr><td id ='price' colspan=3>Name:"+userID+"<br>Bill No: "+billNo+"</td><td id ='price' colspan=2>Date:"+Date+"<br>Time:"+Time+"</td></tr>"+
 					  "<tr><th>S No.</th><th>Product Name</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>");
 			while(rs.next()) {
 				String productName = rs.getString("PRODUCT_NAME");
