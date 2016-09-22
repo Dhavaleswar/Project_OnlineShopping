@@ -18,14 +18,13 @@
 <form action="SearchServlet" method="GET" target ="myframe">
 <p align="center">
 <input type="search" name="search" id ="srch" placeholder = "Search" style = "color:deepskyblue ; font-size : 0.4in ; text-align:center;" /><br>
-<br><button class="w3-btn" id ="GOBtn">GO</button>
 </p>
 </form>
 </div>
 <nav class="nav">
 <ul>
-  <p><button class="w3-btn" onclick="document.getElementById('frame').src = '/Shopping/PurchaseServlet'" id ="OdeBtn">Order History</button></p>
-<p><button class="w3-btn" onclick="document.getElementById('frame').src = '/Shopping/CartServlet'" id = "CarBtn">Cart</button></p>
+  <p><button class="w3-btn w3-red" onclick="document.getElementById('frame').src = '/Shopping/PurchaseServlet'" id ="OdeBtn">Order History</button></p>
+<p><button class="w3-btn w3-pink" onclick="document.getElementById('frame').src = '/Shopping/CartServlet'" id = "CarBtn">Cart</button></p>
 </ul>
 <form action="LogOutServlet" method ="GET"><p><button class="w3-btn w3-purple"  id = "tranBtn">LogOut</button></p></form>
 

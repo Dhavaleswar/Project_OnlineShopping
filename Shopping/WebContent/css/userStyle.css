@@ -29,7 +29,7 @@ footer {background: #A0522D;color:white;height:5%;width:100%;}
 
 .nav {
 	width: 10px;
-	background: LightBlue;
+	background: lightgreen;
 	}
 
 .nav ul {
@@ -51,7 +51,7 @@ footer {background: #A0522D;color:white;height:5%;width:100%;}
 
 #search-form {
 	 width: 40%;
-    background-color: LightBlue;
+    background-color: lightgreen;
     color: white;
     padding: 14px 20px;
     margin: 0px 0;
@@ -106,5 +106,4 @@ tr:nth-child(even) {
 	width:50%;
 	height:10%;
 	border-radius: 25px;
-	border: solid deepskyblue;
 }

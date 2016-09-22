@@ -22,7 +22,7 @@ public class UserDBSession {
 	public UserDBSession() throws SQLException, ClassNotFoundException {
 		DB_URL = "jdbc:mysql://localhost:3306/USERS_DB";
 		USER = "root";
-		PASS = "itsmyroot";
+		PASS = "1234";
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(DB_URL,USER,PASS);
 		stmt = conn.createStatement();		
