@@ -29,7 +29,6 @@ public class CategoryServlet extends HttpServlet {
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		String category = request.getParameter("category");
 		System.out.println(category);
-		request.getRequestDispatcher("/updatingCatServlet?pid="+pid).include(request,response);
 		try {
 			DBSession dbConnection = new DBSession();
 			String query = "SELECT PRODUCT_NAME FROM PRODUCTS WHERE PID="+pid;
@@ -42,8 +41,20 @@ public class CategoryServlet extends HttpServlet {
 	        out.print("alert('Category linked to "+name+"');");
 	        out.println("</script>");
 		}catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			out.println("<script type=\"text/javascript\">");
+	        out.print("alert('Category already exists');");
+	        out.println("</script>");
 			e.printStackTrace();
 		}
+		request.getRequestDispatcher("/AddNew.html").include(request,response);
+		out.print("<div id ='updating-cat-form'>");
+		out.print("<form action ='CategoryServlet' method = 'POST'>");
+		out.print("<input type='hidden' id='pidIn' name='pid' value = "+pid+"> "
+				+ "<label for= 'category'>CATEGORY</label>" +"<br>"+"<br>"
+				+ "<input type='text' id='category' name='category' value = 'category name'> "
+				+ "<input type='submit' value='Submit' id ='up-form-submit'>"
+				);		
+		out.print("</form>");
+		out.print("</div>");
 	}
 }
